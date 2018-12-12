@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Externals", "_Externals", 
 		LICENSE = LICENSE
 		Notes.txt = Notes.txt
 		README.md = README.md
+		Article\Solutions for Neapolitan's Algorithm Design book.pdf = Article\Solutions for Neapolitan's Algorithm Design book.pdf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter 1", "Chapter 1\Chapter 1.csproj", "{2E6F5A61-2873-445D-833F-5CF1F628FC4B}"

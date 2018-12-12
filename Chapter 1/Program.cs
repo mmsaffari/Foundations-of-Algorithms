@@ -23,9 +23,13 @@ namespace Chapter_1 {
 			Console.WriteLine("Max(C) = {0}", Max(C));
 			Console.WriteLine("Min(C) = {0}", Min(C));
 
+			for (int i = 1; i < 6; i++) {
+				Console.WriteLine("{0}th smallest: {1}", i, FindkthSmallest(Array, i));
+			}
 
 		}
 
+		// Exercise 1:
 		static int Max(int[] Array) {
 			int Max = Array[0];
 			for (int i = 0; i < Array.Length; i++) {
@@ -36,6 +40,7 @@ namespace Chapter_1 {
 			return Max;
 		}
 
+		//Needed for exercise 2:
 		static int Min(int[] Array) {
 			int Min = Array[0];
 			for (int i = 0; i < Array.Length; i++) {
@@ -45,5 +50,21 @@ namespace Chapter_1 {
 			}
 			return Min;
 		}
+
+		//exercise 2:
+		static int FindkthSmallest(int[] Array, int k) {
+			int kthMin = Min(Array);
+			for (int level = 0; level < k - 1; level++) {
+				int levelMin = Max(Array);
+				for (int i = 0; i < Array.Length; i++) {
+					if (Array[i] > kthMin && Array[i] < levelMin) {
+						levelMin = Array[i];
+					}
+				}
+				kthMin = levelMin;
+			}
+			return kthMin;
+		}
+
 	}
 }
