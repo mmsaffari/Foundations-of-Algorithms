@@ -5,8 +5,8 @@ namespace Chapter_3 {
 	class Program {
 		static void Main(string[] args) {
 			int
-				n = 10,
-				k = 5;
+				n = 1,
+				k = 0;
 			Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination_2D(n, k));
 			Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
 		}
@@ -26,7 +26,7 @@ namespace Chapter_3 {
 		}
 
 		static double Combination(int n, int k) {
-			if (n < 1 || k > n || k < 0) { throw new NotSupportedException(); }
+			if (n < 0 || k > n || k < 0) { throw new NotSupportedException(); }
 
 			if (k > n / 2) { k = n - k; }
 			double[] mat = new double[k < 1 ? 2 : k + 1];
