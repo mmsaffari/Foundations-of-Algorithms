@@ -6,9 +6,9 @@ namespace Chapter_3 {
 		static void Main(string[] args) {
 			int
 				n = 10,
-				k = 3;
-			System.Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination_2D(n, k));
-			System.Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
+				k = 5;
+			Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination_2D(n, k));
+			Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
 		}
 
 		static double Combination_2D(int n, int k) {
@@ -26,16 +26,26 @@ namespace Chapter_3 {
 		}
 
 		static double Combination(int n, int k) {
-			double[] mat = new double[k + 1 < 2 ? 2 : k + 1];
+			if (n < 1 || k > n || k < 0) { throw new NotSupportedException(); }
+
+			if (k > n / 2) { k = n - k; }
+			double[] mat = new double[k < 1 ? 2 : k + 1];
 			mat[0] = 1;
 			mat[1] = 1;
+
 			for (int i = 2; i < n + 1; i++) {
-				int halfWay = (int)Math.Ceiling((double)(i + 1) / 2);
-				mat[halfWay - 1] += mat[halfWay - 2];
-				for (int j = halfWay-2; j > 0; j--) {
+				int halfWay = i / 2;
+				if (halfWay <= k) {
+					mat[halfWay] += mat[halfWay - 1];
+				}
+				if (halfWay + i % 2 <= k) {
+					mat[halfWay + i % 2] = mat[halfWay];
+				}
+				int headStart = halfWay - 1 < k ? halfWay - 1 : k;
+				for (int j = headStart; j > 0; j--) {
 					mat[j] += mat[j - 1];
 				}
-				Console.WriteLine("i={0}, k={1}, Matrix = {{ {2} }}", i, k, string.Join(", ", mat.Select(item => string.Format("{0,3}", item)).ToArray()));
+				Console.WriteLine("i={0,2}, k={1,2}, Matrix = {{ {2} }}", i, k, string.Join(", ", mat.Select(item => string.Format("{0,3}", item)).ToArray()));
 			}
 			return mat[k];
 		}
