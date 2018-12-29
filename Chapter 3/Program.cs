@@ -4,11 +4,15 @@ using System.Linq;
 namespace Chapter_3 {
 	class Program {
 		static void Main(string[] args) {
-			int
-				n = 1,
-				k = 0;
-			Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination_2D(n, k));
-			Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
+			//int
+			//	n = 1,
+			//	k = 0;
+			//Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination_2D(n, k));
+			//Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
+
+			WeightedGraph wg = new WeightedGraph();
+			wg.GenerateRandomGraph();
+			wg.PrettyPrint();
 		}
 
 		static double Combination_2D(int n, int k) {
