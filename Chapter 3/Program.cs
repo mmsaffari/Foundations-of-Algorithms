@@ -10,7 +10,7 @@ namespace Chapter_3 {
 			//Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination_2D(n, k));
 			//Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
 
-			WeightedGraph wg = new WeightedGraph();
+			WeightedGraph wg = new WeightedGraph(NodeCount: 5);
 			wg.GenerateRandomGraph();
 			wg.PrettyPrint();
 		}
