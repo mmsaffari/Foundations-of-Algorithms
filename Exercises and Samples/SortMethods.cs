@@ -16,7 +16,6 @@ namespace Exercises_and_Samples {
 			return result;
 		}
 
-
 		public static T[] MergeSort<T>(T[] input) where T : IComparable {
 			int n = input.Length;
 
@@ -46,6 +45,36 @@ namespace Exercises_and_Samples {
 			}
 
 			return input;
+		}
+
+		public static T[] QuickSort<T>(T[] input) where T : IComparable {
+			T[] result = input.Clone() as T[];
+			QuickSort(result, 0, result.Length - 1);
+			return result;
+		}
+		private static void QuickSort<T>(T[] input, int low, int high) where T : IComparable {
+			if (low < high) {
+				int q = Partition(input, low, high);
+				if (q > 1) { QuickSort(input, low, q - 1); }
+				if (q + 1 < high) { QuickSort(input, q + 1, high); }
+			}
+		}
+		private static int Partition<T>(T[] input, int low, int high) where T : IComparable {
+			T x = input[low];
+			int i = low + 1;
+			int j = high;
+			do {
+				while (i <= high && input[i].CompareTo(x) < 0) { i++; }
+				while (j >= low && input[j].CompareTo(x) > 0) { j--; }
+				if (i < j) { Swap(ref input[i], ref input[j]); }
+			} while (i < j);
+			Swap(ref input[low], ref input[j]);
+			return j;
+		}
+		private static void Swap<T>(ref T v1, ref T v2) {
+			T temp = v1;
+			v1 = v2;
+			v2 = temp;
 		}
 	}
 

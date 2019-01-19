@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Exercises_and_Samples {
 	class Program {
@@ -11,12 +12,16 @@ namespace Exercises_and_Samples {
 			//int Number = Convert.ToInt32(Console.ReadLine());
 			//Console.WriteLine("Index of {0} in the List is {1}", Number, BinarySearch_Recursive(Number, List, 0, List.Length));
 
-			int[] List = new int[] { 10, 41, 15, 132, 102, 23, 265, 176, 90 ,10};
+			int[] List = new int[] { 10, 41, 15, 132, 102, 23, 265, 176, 90, 10 };
 			Console.WriteLine("UnSorted: [{0}]", string.Join(", ", List));
 			//List = SortMethods.InsertionSort(List);
 			//Console.WriteLine("Insertion Sorted: [{0}]", string.Join(", ", List));
-			List = SortMethods.MergeSort(List);
-			Console.WriteLine("Merge Sorted: [{0}]", string.Join(", ", List));
+			//List = SortMethods.MergeSort(List);
+			//Console.WriteLine("Merge Sorted: [{0}]", string.Join(", ", List));
+			List = SortMethods.QuickSort(List);
+			List = SortMethods.QuickSort(List);
+			List = SortMethods.QuickSort(List.Reverse().ToArray());
+			Console.WriteLine("Quick Sorted: [{0}]", string.Join(", ", List));
 
 
 			//for (int i = 0; i < List.Length; i++) {
