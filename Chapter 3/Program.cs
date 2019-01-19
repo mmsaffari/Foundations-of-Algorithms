@@ -11,8 +11,17 @@ namespace Chapter_3 {
 			//Console.WriteLine("C({0}, {1}) = {2}", n, k, Combination(n, k));
 
 			WeightedGraph wg = new WeightedGraph(NodeCount: 5);
-			wg.GenerateRandomGraph();
+			//wg.GenerateRandomGraph();
+			wg.AdjucencyMatrix = new int[,] {
+				{ 0, 1, int.MaxValue, 1, 5 },
+				{ 9, 0, 3, 2, int.MaxValue },
+				{ int.MaxValue, int.MaxValue, 0, 4, int.MaxValue },
+				{ int.MaxValue, int.MaxValue, 2, 0, 3 },
+				{ 3, int.MaxValue, int.MaxValue, int.MaxValue, 0 }
+			};
 			wg.PrettyPrint();
+			Console.WriteLine("Length(1,4,3) = {0}", wg.Length(new int[] { 0, 3, 2 }));
+			//wg.FillDistanceMatrix();
 		}
 
 		static double Combination_2D(int n, int k) {
